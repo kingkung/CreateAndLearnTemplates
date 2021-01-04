@@ -11,12 +11,14 @@ import com.google.common.collect.ImmutableMap;
 
 import java.util.Map;
 
+import us.createandlearn.huntthewumpus.HuntTheWumpusActivity;
 import us.createandlearn.tendotfive.TenDotFiveActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private static final ImmutableMap<String, Class> LESSONS =
-            new ImmutableMap.Builder<String, Class>()
-                    .put("Ten Dot Five", TenDotFiveActivity.class)
+    private static final ImmutableMap<Integer, Class> LESSONS =
+            new ImmutableMap.Builder<Integer, Class>()
+                    .put(R.string.title_activity_ten_dot_five, TenDotFiveActivity.class)
+                    .put(R.string.title_activity_hunt_the_wumpus, HuntTheWumpusActivity.class)
                     .build();
 
     @Override
@@ -25,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Create and Learn Android Projects");
         setContentView(R.layout.activity_main);
         ViewGroup viewGroup = findViewById(R.id.lesson_launcher);
-        for (Map.Entry<String, Class> entry : LESSONS.entrySet()) {
+        for (Map.Entry<Integer, Class> entry : LESSONS.entrySet()) {
             Button button = new Button(this);
             int buttonPadding = getResources().getDimensionPixelSize(R.dimen.button_padding);
             button.setPadding(buttonPadding, buttonPadding, buttonPadding, buttonPadding);
-            button.setText(entry.getKey());
+            button.setText(getResources().getString(entry.getKey()));
             button.setOnClickListener(
                     (v) -> startActivity(new Intent(this, entry.getValue())));
             viewGroup.addView(button);

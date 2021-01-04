@@ -11,6 +11,9 @@
         <activity
             android:name=".tendotfive.TenDotFiveActivity"
             android:label="@string/title_activity_ten_dot_five"></activity>
+        <activity
+            android:name=".huntthewumpus.HuntTheWumpusActivity"
+            android:label="@string/title_activity_hunt_the_wumpus"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
